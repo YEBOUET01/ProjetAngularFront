@@ -1,34 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { bdInitialAssignments } from './data';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
-  assignments:Assignment[] = [
-    {
-      id:1,
-      nom:"Devoir Angular de Mr Buffa",
-      dateDeRendu: new Date('2024-05-01'),
-      rendu:false
-    },
-    {
-      id:2,
-      nom:"Devoir IOS de Mr Edouard",
-      dateDeRendu: new Date('2024-04-02'),
-      rendu:true
-    },
-    {
-      id:3,
-      nom:"Devoir Groovy de Mr Galliu",
-      dateDeRendu: new Date('2024-02-12'),
-      rendu:true
-    }
-  ];
- 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
+  assignments:Assignment[] = [];
+  backendUrl = 'http://localhost:8010/api/assignments';
+ 
   /**
    *  Renvoie tous les assignments 
    */
@@ -37,7 +22,7 @@ export class AssignmentsService {
     // ira chercher les données dans la base de données
     // située dans le cloud
 
-    return of(this.assignments);
+    return this.http.get<Assignment[]>(this.backendUrl);
   }
 
   /**
@@ -45,19 +30,20 @@ export class AssignmentsService {
    * @param id => id de l'assignment à récupérer
    * @returns un assignment ou undefined si l'assignment n'est pas trouvé
    */
-  getAssignment(id:number):Observable<Assignment|undefined> {
+  getAssignment(id:string):Observable<Assignment|undefined> {
     // renvoie l'assignment avec l'id passé en paramètre
-    const a:Assignment|undefined = this.assignments.find(a => a.id === id);
+    //const a:Assignment|undefined = this.assignments.find(a => a.id === id);
 
-    return of(a);
+    //return of(a);
+    return this.http.get<Assignment>(this.backendUrl + '/' + id);
   }
 
-  addAssignment(assignment:Assignment):Observable<string> {
-    this.assignments.push(assignment);
-    return of("Service: Assignment ajouté !");
+  addAssignment(assignment:Assignment):Observable<any> {
+    //this.assignments.push(assignment);
+    return this.http.post<Assignment>(this.backendUrl, assignment);
   }
 
-  updateAssignment(assignment:Assignment):Observable<string> {
+  updateAssignment(assignment:Assignment):Observable<any> {
     // on cherche l'assignment à modifier. Plus tard on enverra l'assignment
     // à un web service pour le modifier. Le web service fera un UPDATE dans la
     // base de données
@@ -65,19 +51,32 @@ export class AssignmentsService {
     //let i = this.assignments.findIndex(a => a === assignment);
     //this.assignments[i] = assignment;
 
-    return of("Service : Assignment modifié !");
+    return this.http.put<Assignment>(this.backendUrl, assignment);
   }
 
-  deleteAssignment(assignment:Assignment|undefined):Observable<string> {
+  deleteAssignment(assignment:Assignment|undefined):Observable<any> {
     // on cherche l'assignment à supprimer. Plus tard on enverra l'assignment
     // à un web service pour le supprimer. Le web service fera un DELETE dans la
     // base de données
 
-    if(!assignment) return of("Service : Assignment non trouvé !");
+    //if(!assignment) return of("Service : Assignment non trouvé !");
 
-    let pos = this.assignments.indexOf(assignment);
-    this.assignments.splice(pos, 1);
+    //let pos = this.assignments.indexOf(assignment);
+    //this.assignments.splice(pos, 1);
 
-    return of("Service : Assignment supprimé !");
+    return this.http.delete<any>(this.backendUrl + '/' + assignment?._id);
+  }
+
+  peuplerBD() {
+    bdInitialAssignments.forEach(a => {
+      let newAssignment = new Assignment();
+      newAssignment.nom = a.nom;
+      newAssignment.dateDeRendu = new Date(a.dateDeRendu);
+      newAssignment.rendu = a.rendu;
+
+      this.addAssignment(newAssignment).subscribe(() => {
+        console.log("Assignment ajouté : " + a.nom);
+      });
+    });
   }
 }

@@ -9,6 +9,7 @@ import { AssignmentsService } from '../../shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../shared/auth.service';
 @Component({
   selector: 'app-assignment-detail',
   standalone: true,
@@ -23,6 +24,7 @@ export class AssignmentDetailComponent {
   assignmentTransmis: Assignment|undefined;
 
   constructor(private assignementsService:AssignmentsService,
+              private authService:AuthService,
               private route:ActivatedRoute,
               private router:Router) {}
 
@@ -32,7 +34,7 @@ export class AssignmentDetailComponent {
     // on va récupérer l'id dans l'URL
     // le + est là pour convertir en nombre l'id pris dans l'URL,
     // qui est une chaine de caractères
-    const id = +this.route.snapshot.params['id'];
+    const id = this.route.snapshot.params['id'];
 
     // on utilise le service pour récupérer l'assignment avec cet id
     this.assignementsService.getAssignment(id)
@@ -88,4 +90,7 @@ export class AssignmentDetailComponent {
     );
   }
   */
+  isAdmin() {
+    return this.authService.loggedIn;
+  }
 }

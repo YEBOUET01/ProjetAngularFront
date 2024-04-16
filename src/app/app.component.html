@@ -3,5 +3,8 @@
     <a routerLink="/home">{{titre}}</a>
   </nav>
 </h1>
+<mat-slide-toggle (click)="onLogin()">Login</mat-slide-toggle>
+<button mat-raised-button color="primary" (click)="genereDonnesDeTest()">
+  Peupler la BD avec données de test</button>
 
 <router-outlet></router-outlet>
