@@ -29,6 +29,10 @@ export class EditAssignmentComponent {
   // Pour les champs de formulaire
   nomAssignment = '';
   dateDeRendu?: Date = undefined;
+  Note = 0;
+  Devoir = "";
+  Matiere = "";
+  Remarque = '';
  
   constructor(
     private assignmentsService: AssignmentsService,
@@ -47,7 +51,11 @@ export class EditAssignmentComponent {
       if (!this.assignment) return;
 
       this.nomAssignment = this.assignment.nom;
+      this.Matiere = this.assignment.matiere;
+      this.Devoir = this.assignment.devoir;
       this.dateDeRendu = this.assignment.dateDeRendu;
+      this.Note = this.assignment.note;
+      this.Remarque = this.assignment.remarque; 
     });
   }
  

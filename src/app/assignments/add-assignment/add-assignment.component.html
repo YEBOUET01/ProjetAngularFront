@@ -1,7 +1,23 @@
 <form ngForm (submit)="onSubmit(); formAssignments.reset()" class="form" #formAssignments>
     <mat-form-field>
+        <mat-label>Matière</mat-label>
+        <input matInput placeholder="Nom du devoir" [(ngModel)]="Matiere" name="matiere">
+    </mat-form-field>
+
+<form ngForm (submit)="onSubmit(); formAssignments.reset()" class="form" #formAssignments>
+    <mat-form-field>
         <mat-label>Nom du devoir</mat-label>
-        <input matInput placeholder="Nom du devoir" [(ngModel)]="nomDevoir" name="nom">
+        <input matInput placeholder="Nom du devoir" [(ngModel)]="nomDevoir" name="devoir">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Nom de l'élève</mat-label>
+        <input matInput placeholder="Nom eleve" [(ngModel)]="nomEleve" name="nom">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Note</mat-label>
+        <input matInput placeholder="/20" [(ngModel)]="Note" name="note">
     </mat-form-field>
 
     <mat-form-field>
@@ -11,6 +27,11 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Remarque</mat-label>
+        <input matInput placeholder="Remarque" [(ngModel)]="Remarque" name="remarque">
+    </mat-form-field>
       
     <button mat-raised-button color="primary" 
     >

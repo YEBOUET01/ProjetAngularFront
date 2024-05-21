@@ -79,17 +79,17 @@ export class AssignmentDetailComponent {
       this.assignmentTransmis = undefined;
     });
   }
-  /* Exemple de navigation dynamique avec passage de query params et fragment
+   //Exemple de navigation dynamique avec passage de query params et fragment
   onClickEdit() {
     // on navigue vers la page d'édition de l'assignment
-    this.router.navigate(['/assignments', this.assignmentTransmis?.id, 'edit'],
+    this.router.navigate(['/assignments', this.assignmentTransmis?._id, 'edit'],
       {
         queryParams: { nom: 'toto', debug:true },
         fragment: 'edition'
       }
     );
   }
-  */
+  
   isAdmin() {
     return this.authService.loggedIn;
   }

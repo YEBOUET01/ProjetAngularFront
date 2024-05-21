@@ -11,6 +11,7 @@ import { Assignment } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-assignment',
   standalone: true,
@@ -21,25 +22,37 @@ import { Router } from '@angular/router';
   styleUrl: './add-assignment.component.css'
 })
 export class AddAssignmentComponent {
+//nomEleve: any;
   constructor(private assignmentsService:AssignmentsService,
-              private router:Router
+              private router:Router,
+       
   ) { }
 
   // pour le formulaire
   nomDevoir = '';
   dateDeRendu = null;
+  nomEleve = '';
+  Matiere = '';
+  Note = 0 ;
+  Remarque = '';
+  //selectedFile: File | undefined;
+
 
   onSubmit() {
-    if(this.nomDevoir === '' || this.dateDeRendu === null) return;
+    if(this.nomDevoir === '' || this.nomEleve == '' || this.Matiere == '' || this.dateDeRendu === null) return;
 
    console.log("Bouton cliqué, on ajoute le devoir : " + this.nomDevoir + 
    " à rendre pour le " + this.dateDeRendu);
 
    // On crée un nouvel assignment avec les valeurs du formulaire
    let a = new Assignment();
+   a.devoir = this.nomDevoir;
+   a.matiere = this.Matiere;
    a.nom = this.nomDevoir;
+   a.note = this.Note;
    a.dateDeRendu = this.dateDeRendu;
    a.rendu = false;
+   a.remarque = this.Remarque;
 
    // On ajoute cet assignment au tableau des assignments
    // via le service
