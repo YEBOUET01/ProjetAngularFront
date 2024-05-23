@@ -3,4 +3,19 @@
     flex-direction: column;
     margin:5px;
  }
+ .container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    background-origin: padding-box;
+    padding: 20px;  
+    margin-left: 500px;
+    border-color: chartreuse;
+ }
+
+ .btn {
+    align-self: flex-end;
+    display: flex;
+    background-color: #4CAF50; 
+ }
  

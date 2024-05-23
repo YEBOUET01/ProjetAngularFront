@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from  '@angular/material/card' ;
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { RouterLink } from '@angular/router';
@@ -30,7 +32,7 @@ import { AssignmentsService } from '../shared/assignments.service';
   imports: [CommonModule, RenduDirective, NonRenduDirective,
     MatListModule, MatButtonModule, RouterLink, MatInputModule,
     MatFormFieldModule, MatSliderModule, FormsModule, MatTableModule,
-    AssignmentDetailComponent, AddAssignmentComponent, MatPaginatorModule
+    AssignmentDetailComponent, AddAssignmentComponent, MatPaginatorModule, MatCardModule, MatIconModule
   ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
@@ -50,6 +52,64 @@ export class AssignmentsComponent {
   hasNextPage = false;
   prevPage = 0;
   nextPage = 0;
+   
+
+
+    // Mapping des matières vers leurs images
+    matieresImages: { [key: string]: { matiereImg: string; profImg: string; } } = {
+      'Mathematiques': {
+        matiereImg: 'assets/images/maths.png',
+        profImg: 'assets/images/prof_maths.jpeg'
+      },
+      'Physique': {
+        matiereImg: 'assets/images/physique.png',
+        profImg: 'assets/images/prof_physique.jpg'
+      },
+      'SVT': {
+        matiereImg: 'assets/images/svt.jpg',
+        profImg: 'assets/images/prof_svt.jpg'
+      },
+      'Histoire': {
+        matiereImg: 'assets/images/histoire.png',
+        profImg: 'assets/images/prof_histoire.jpg'
+      },
+      'Espagnol': {
+        matiereImg: 'assets/images/espagnol.jpeg',
+        profImg: 'assets/images/prof_espagnol.jpg'
+      },
+      'Francais': {
+        matiereImg: 'assets/images/francais.jpeg',
+        profImg: 'assets/images/prof_francais.jpg'
+      },
+      'Informatique': {
+        matiereImg: 'assets/images/informatique.png',
+        profImg: 'assets/images/prof_informatique.jpg'
+      },
+      'Arts': {
+        matiereImg: 'assets/images/arts.jpg',
+        profImg: 'assets/images/prof_arts.jpg'
+      },
+      'Musique': {
+        matiereImg: 'assets/images/musique.jpg',
+        profImg: 'assets/images/prof_musique.jpg'
+      }
+  
+    };
+  Matiere: any;
+  
+    getmatiereImage(matiere: string){
+      return this.matieresImages[matiere]?.matiereImg || '';
+    }
+  
+    getprofImage(matiere: string) {
+      return this.matieresImages[matiere]?.profImg || '';
+    }
+
+  
+    trackByFn(index: number, item: Assignment) {
+      return item._id; // ou tout autre champ unique
+    }
+    
 
   constructor(private assignmentsService: AssignmentsService) { }
 

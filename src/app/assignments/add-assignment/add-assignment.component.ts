@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Assignment } from '../assignment.model';
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, 
-    MatButtonModule],
+    MatButtonModule, CommonModule],
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.css'
 })
@@ -35,7 +36,59 @@ export class AddAssignmentComponent {
   Matiere = '';
   Note = 0 ;
   Remarque = '';
-  //selectedFile: File | undefined;
+  
+
+  // Mapping des matières vers leurs images
+  matieresImages: { [key: string]: { matiereImg: string; profImg: string; } } = {
+    'Mathematiques': {
+      matiereImg: 'assets/images/maths.png',
+      profImg: 'assets/images/prof_maths.jpeg'
+    },
+    'Physique': {
+      matiereImg: 'assets/images/physique.png',
+      profImg: 'assets/images/prof_physique.jpg'
+    },
+    'SVT': {
+      matiereImg: 'assets/images/svt.jpg',
+      profImg: 'assets/images/prof_svt.jpg'
+    },
+    'Histoire': {
+      matiereImg: 'assets/images/histoire.png',
+      profImg: 'assets/images/prof_histoire.jpg'
+    },
+    'Espagnol': {
+      matiereImg: 'assets/images/espagnol.jpeg',
+      profImg: 'assets/images/prof_espagnol.jpg'
+    },
+    'Francais': {
+      matiereImg: 'assets/images/francais.jpeg',
+      profImg: 'assets/images/prof_francais.jpg'
+    },
+    'Informatique': {
+      matiereImg: 'assets/images/informatique.png',
+      profImg: 'assets/images/prof_informatique.jpg'
+    },
+    'Arts': {
+      matiereImg: 'assets/images/arts.jpg',
+      profImg: 'assets/images/prof_arts.jpg'
+    },
+    'Musique': {
+      matiereImg: 'assets/images/musique.jpg',
+      profImg: 'assets/images/prof_musique.jpg'
+    }
+
+    // Ajoutez d'autres matières ici si nécessaire
+  };
+
+  get matiereImage() {
+    return this.matieresImages[this.Matiere]?.matiereImg || '';
+  }
+
+  get profImage() {
+    return this.matieresImages[this.Matiere]?.profImg || '';
+  }
+
+
 
 
   onSubmit() {
@@ -48,11 +101,14 @@ export class AddAssignmentComponent {
    let a = new Assignment();
    a.devoir = this.nomDevoir;
    a.matiere = this.Matiere;
-   a.nom = this.nomDevoir;
+   a.nom = this.nomEleve;
    a.note = this.Note;
    a.dateDeRendu = this.dateDeRendu;
    a.rendu = false;
    a.remarque = this.Remarque;
+
+
+
 
    // On ajoute cet assignment au tableau des assignments
    // via le service

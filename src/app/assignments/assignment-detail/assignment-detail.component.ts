@@ -67,7 +67,7 @@ export class AssignmentDetailComponent {
       this.router.navigate(['/home']);
     });
   }
-
+ 
   onDelete() {    
     // on utilise le service pour supprimer l'assignment
     this.assignementsService.deleteAssignment(this.assignmentTransmis)

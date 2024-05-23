@@ -12,7 +12,7 @@
       <mat-form-field>
       <input matInput placeholder="Edition du nom du devoir" [(ngModel)]="Devoir" name="nomDevoir">
       </mat-form-field>
-
+ 
       <mat-form-field>
         <input matInput placeholder="Edition du nom" [(ngModel)]="nomAssignment" name="assignment-name">
       </mat-form-field>
@@ -28,16 +28,21 @@
          <mat-datepicker-toggle matSuffix [for]="picker">
          </mat-datepicker-toggle>
          <mat-datepicker #picker></mat-datepicker>
-       </mat-form-field>
+       </mat-form-field> 
 
        <mat-form-field>
         <input matInput placeholder="Edition de la remarque" [(ngModel)]="Remarque" name="remarque">
         </mat-form-field>
 
-       <button mat-raised-button color="primary" [disabled]="((!nomAssignment)||(!dateDeRendu))">
+        <div *ngIf="Matiere">
+          <img *ngIf="matiereImage" [src]="matiereImage" alt="Image de la matière" width="200">
+        <img *ngIf="profImage" [src]="profImage" alt="Image du prof de la matière" width="200">
+        </div>
+
+       <button mat-raised-button class="btn" color="primary" [disabled]="((!nomAssignment)||(!dateDeRendu))||(!Note)||(!Devoir)||(!Matiere)||(!Remarque)">
         Sauver
       </button> 
     </form>
    </div> 
-   }
+   } 
        

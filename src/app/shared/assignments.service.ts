@@ -12,8 +12,8 @@ export class AssignmentsService {
   constructor(private http:HttpClient) { }
 
   assignments:Assignment[] = [];
-  //backendUrl = 'http://localhost:8010/api/assignments';
-  backendUrl = 'https://angularestatic2024back.onrender.com/api/assignments';
+  backendUrl = 'http://localhost:8010/api/assignments';
+  //backendUrl = 'https://angularestatic2024back.onrender.com/api/assignments';
  
   /**
    *  Renvoie tous les assignments 
@@ -39,7 +39,7 @@ export class AssignmentsService {
     return this.http.get<Assignment>(this.backendUrl + '/' + id)
     .pipe(
       tap(a => console.log('Dans le TAP rxjs AVANT MAP ' + a.nom)),
-      map(a => { a.nom += " MODIFIE PAR MAP"; return a;}),
+      map(a => { a.nom ; return a;}),
       tap(a => console.log('Dans le TAP rxjs APRES MAP' + a.nom)),
       catchError(this.handleError<any>('### catchError: getAssignments by id avec id=' + id))
     );
@@ -92,9 +92,13 @@ export class AssignmentsService {
   peuplerBDNaive() {
     bdInitialAssignments.forEach(a => {
       let newAssignment = new Assignment();
+      newAssignment.matiere = a.matiere;
+      newAssignment.devoir = a.devoir;
       newAssignment.nom = a.nom;
+      newAssignment.note = a.note;
       newAssignment.dateDeRendu = new Date(a.dateDeRendu);
       newAssignment.rendu = a.rendu;
+      newAssignment.remarque = a.remarque;
 
       this.addAssignment(newAssignment).subscribe(() => {
         console.log("Assignment ajouté : " + a.nom);
@@ -107,9 +111,13 @@ export class AssignmentsService {
  
     bdInitialAssignments.forEach(a => {
       const nouvelAssignment = new Assignment();
+      nouvelAssignment.matiere = a.matiere;
+      nouvelAssignment.devoir = a.devoir;
       nouvelAssignment.nom = a.nom;
+      nouvelAssignment.note = a.note;
       nouvelAssignment.dateDeRendu = new Date(a.dateDeRendu);
       nouvelAssignment.rendu = a.rendu;
+      nouvelAssignment.remarque = a.remarque;
  
       appelsVersAddAssignment.push(this.addAssignment(nouvelAssignment))
     });

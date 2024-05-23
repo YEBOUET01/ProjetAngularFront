@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CommonModule } from '@angular/common'
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
@@ -19,6 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router';
    MatFormFieldModule,
    MatDatepickerModule,
    MatButtonModule,
+   CommonModule
  ],
  templateUrl: './edit-assignment.component.html',
  styleUrl: './edit-assignment.component.css',
@@ -33,6 +35,57 @@ export class EditAssignmentComponent {
   Devoir = "";
   Matiere = "";
   Remarque = '';
+
+
+   // Mapping des matières vers leurs images
+   matieresImages: { [key: string]: { matiereImg: string; profImg: string; } } = {
+    'Mathematiques': {
+      matiereImg: 'assets/images/maths.png',
+      profImg: 'assets/images/prof_maths.jpeg'
+    },
+    'Physique': {
+      matiereImg: 'assets/images/physique.png',
+      profImg: 'assets/images/prof_physique.jpg'
+    },
+    'SVT': {
+      matiereImg: 'assets/images/svt.jpg',
+      profImg: 'assets/images/prof_svt.jpg'
+    },
+    'Histoire': {
+      matiereImg: 'assets/images/histoire.png',
+      profImg: 'assets/images/prof_histoire.jpg'
+    },
+    'Espagnol': {
+      matiereImg: 'assets/images/espagnol.jpeg',
+      profImg: 'assets/images/prof_espagnol.jpg'
+    },
+    'Francais': {
+      matiereImg: 'assets/images/francais.jpeg',
+      profImg: 'assets/images/prof_francais.jpg'
+    },
+    'Informatique': {
+      matiereImg: 'assets/images/informatique.png',
+      profImg: 'assets/images/prof_informatique.jpg'
+    },
+    'Arts': {
+      matiereImg: 'assets/images/arts.jpg',
+      profImg: 'assets/images/prof_arts.jpg'
+    },
+    'Musique': {
+      matiereImg: 'assets/images/musique.jpg',
+      profImg: 'assets/images/prof_musique.jpg'
+    }
+
+  };
+
+  get matiereImage() {
+    return this.matieresImages[this.Matiere]?.matiereImg || '';
+  }
+
+  get profImage() {
+    return this.matieresImages[this.Matiere]?.profImg || '';
+  }
+
  
   constructor(
     private assignmentsService: AssignmentsService,
@@ -66,6 +119,10 @@ export class EditAssignmentComponent {
     // on récupère les valeurs dans le formulaire
     this.assignment.nom = this.nomAssignment;
     this.assignment.dateDeRendu = this.dateDeRendu;
+    this.assignment.note = this.Note;
+    this.assignment.devoir = this.Devoir;
+    this.assignment.matiere = this.Matiere;
+    this.assignment.remarque = this.Remarque;
 
     this.assignmentsService
       .updateAssignment(this.assignment)

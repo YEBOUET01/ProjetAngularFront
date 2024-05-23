@@ -1,10 +1,30 @@
-<h1>
+<div class="container">
+<mat-toolbar class="toolbar">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{titre}}</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>logout</mat-icon>
+  </button> 
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onMenuItemClick('Option 1')">Option 1</button>
+  <button mat-menu-item (click)="onMenuItemClick('Option 2')">Option 2</button>
+  <button mat-menu-item (click)="onMenuItemClick('Option 3')">Option 3</button>
+</mat-menu>
+
+
+<!-- <h1>
   <nav>
     <a routerLink="/home">{{titre}}</a>
   </nav>
-</h1>
+</h1> -->
 <mat-slide-toggle (click)="onLogin()">Login</mat-slide-toggle>
-<button mat-raised-button color="primary" (click)="genereDonnesDeTest()">
-  Peupler la BD avec données</button>
+<!-- <button mat-raised-button color="primary" (click)="genereDonnesDeTest()">
+  Peupler la BD avec données</button> -->
 
 <router-outlet></router-outlet>
+</div>
