@@ -61,5 +61,11 @@ backend: node server.js (ou "npm run start")
 
 ## Hébergement du projet
 Le projet est hébergé sur render.com. Vous pouvez y acceder via les liens suivants:
-- frontend:
-- backend: 
+
+- frontend: https://projetangularfront.onrender.com
+- backend: https://projetangularback.onrender.com
+
+## Vidéo de démonstration
+
+
+
