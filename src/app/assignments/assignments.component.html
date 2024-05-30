@@ -7,14 +7,6 @@
             </button>
         </a>
     </div>
-
-    <div id="divPagination">
-        <button mat-raised-button class="green-button" (click)="premierePage()">Première page</button>
-        <button mat-raised-button class="green-button" [disabled]="page===1" (click)="pagePrecedente()">Page precedente</button>
-        <button mat-raised-button class="green-button" [disabled]="page===totalPages" (click)="pageSuivante()">Page suivante</button>
-        <button mat-raised-button class="green-button" (click)="dernierePage()">Dernière page</button>
-    </div>
-
     
     <mat-paginator #paginator
                class="demo-paginator"

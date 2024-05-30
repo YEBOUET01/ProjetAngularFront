@@ -148,29 +148,10 @@ export class AssignmentsComponent {
     }
   }
 
-  pageSuivante() {
-    if (this.page < this.totalPages) {
-      this.page++;
-      this.getAssignments();
-    }
-  }
 
-  pagePrecedente() {
-    if (this.page > 1) {
-      this.page--;
-      this.getAssignments();
-    }
-  }
 
-  premierePage() {
-    this.page = 1;
-    this.getAssignments();
-  }
 
-  dernierePage() {
-    this.page = this.totalPages;
-    this.getAssignments();
-  }
+  
 
   // Pour le paginator
   handlePageEvent(e: PageEvent) {
