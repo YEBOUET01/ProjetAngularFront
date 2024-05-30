@@ -22,7 +22,7 @@
           <button mat-raised-button 
                   color="warn" 
                   (click)="onDelete()"   
-                  [disabled]="!isAdmin()">
+                  [disabled]="!isAdmin"> 
             SUPPRIMER
           </button>
           
@@ -30,7 +30,7 @@
             <a routerLink="/assignments/{{assignmentTransmis._id}}/edit">
               <button mat-raised-button 
                       color="primary"
-                      [disabled]="!isAdmin()">
+                      [disabled]="!isAdmin">
                 MODIFIER
               </button>  
             </a>

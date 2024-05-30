@@ -4,6 +4,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 import { CommonModule } from '@angular/common'
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Assignment } from '../assignment.model';
@@ -20,7 +23,8 @@ import { ActivatedRoute, Router } from '@angular/router';
    MatFormFieldModule,
    MatDatepickerModule,
    MatButtonModule,
-   CommonModule
+   CommonModule,
+   MatSnackBarModule
  ],
  templateUrl: './edit-assignment.component.html',
  styleUrl: './edit-assignment.component.css',
@@ -90,7 +94,8 @@ export class EditAssignmentComponent {
   constructor(
     private assignmentsService: AssignmentsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -109,6 +114,7 @@ export class EditAssignmentComponent {
       this.dateDeRendu = this.assignment.dateDeRendu;
       this.Note = this.assignment.note;
       this.Remarque = this.assignment.remarque; 
+      
     });
   }
  
@@ -134,6 +140,10 @@ export class EditAssignmentComponent {
        this.router.navigate(['/home']);
        console.log("ON NAVIGUE VERS HOME !")
       });
+      this.snackBar.open('Le devoir a bien été modifié', 'Fermer', {
+        duration: 4000
+      });
+      
        
   }
  }

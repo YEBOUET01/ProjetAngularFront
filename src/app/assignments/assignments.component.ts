@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { RouterLink } from '@angular/router';
 
-import { Assignment } from './assignment.model';
+import { Assignment } from './assignment.model'; 
 
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
@@ -60,7 +60,7 @@ export class AssignmentsComponent {
       'Mathematiques': {
         matiereImg: 'assets/images/maths.png',
         profImg: 'assets/images/prof_maths.jpeg'
-      },
+      }, 
       'Physique': {
         matiereImg: 'assets/images/physique.png',
         profImg: 'assets/images/prof_physique.jpg'
@@ -107,7 +107,7 @@ export class AssignmentsComponent {
 
   
     trackByFn(index: number, item: Assignment) {
-      return item._id; // ou tout autre champ unique
+      return item._id; 
     }
     
 

@@ -29,18 +29,18 @@ td {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 16px; /* Espace entre les cartes */
+  gap: 16px; 
 }
 
 .ajouterBtn {
     align-self: flex-end;
+    background-color: #4CAF50; 
 }
 
 #divPagination {
     width:700px;
     display: flex;
     flex-direction: row;
-    /* espace entre les fils constant */
     justify-content: space-between;    
 }
 
@@ -86,22 +86,22 @@ td {
   .card-header {
     display: flex;
     justify-content: space-between;
-    gap: 50px; /* Espacement entre les éléments */
-    align-items: center; /* Alignement vertical au centre */
+    gap: 50px; 
+    align-items: center; 
   }
 
   .card {
-    width: 400px; /* Ajustez la taille selon vos besoins */
+    width: 400px;
     margin: 20px;
     padding: 10px;
     text-align: center;
-    border: 1px solid #40A578;
+    border: 1px solid #40A550;
     border-radius: 5px;
     height: auto;
   }
   
   .card-content {
-    text-align: center; /* Centrer le texte horizontalement */
+    text-align: center; 
   }
   
   
@@ -127,9 +127,16 @@ td {
     display: flex;
     justify-content: center;
 }
-
 .slider {
     width: 300px;
+}
+.green-button {
+  background-color: green;
+  color: white;
+}
+
+.green-button:hover {
+  background-color: darkgreen;
 }
 
   

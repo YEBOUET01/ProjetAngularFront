@@ -1,27 +1,65 @@
-# AssignmentApp
+# Applicattion de gestion des devoirs à rendre
+Il sagit pour nous dans ce projet, dans le cadre de la mise en application de nos acquis du de ANGULAR, dispensé par M. Michel BUFFA, de poursuivre et achever une application de gestion des devoir à rendre.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
 
-## Development server
+## Binôme pour le projet
+- SILUE CAMPBEL IBRAHIM FOUGNIGUE
+- YEBOUET RICHMOND JUNIOR
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Contributions pour la réalisation
 
-## Code scaffolding
+Frontend réalisé par: YEBOUET RICHMOND JUNIOR
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Backend réalisé par: SILUE CAMPBEL IBRAHIM FOUGNIGUE
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Fonctionnalités attendues
+### Ce que nous avons réalisé
+- Ajouter une Toolbar et une SideBar/Sidenav pour la présentation
+- Ajouter une gestion de login/password (code en dur dans le service d'authentification une liste de login/passwords valides)
+- Ajouter de nouvelles propriétés au modèle des Assignments:
+    Auteur (nom ou photo de l'élève)
+    Matière (Base de données, Technologies Web, Grails, etc.)
+        Une image sera associée à chaque matière et une photo du prof
+    Note sur 20
+    Remarques
+- Améliorer l'affichage des Assignments
+    Puisqu'on a ajouté de nouvelles propriétés, il faudra mettre à jour les différents endroits où les Assignments sont affichés/édités/saisis, en particulier :
+        Par exemple, afficher dans la liste des Assignments chaque Assignment sous forme d'une Material Card, avec le titre, la date, l'élève, une petite image illustrant la matière, la photo du prof en petit en haut à droite.
+    La vue détails montrera en plus les remarques, la note s'il a été rendu, etc.
+    Les formulaires d'ajout et de détails proposeront un choix fixe de matières (et associeront automatiquement le prof et l'image illustrant la matière)
 
-## Running unit tests
+### Ce que nous n'avons pas pu réaliser
+- Optionnel (mais simple à faire): utiliser un Formulaire de type Stepper (formulaire en plusieurs étapes) pour l'ajout d'Assignments (éventuellement pour la modification)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Ce que nous avons réalisé en plus
+- Ajout de messages de notification (SnackBar Material)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Pour faire tourner le projet sr votre machine, il faut:
+### Clonez les repositories Github du frontend et du backend sur votre machine
+- frontend: https://github.com/YEBOUET01/ProjetAngularFront
+- backend: https://github.com/YEBOUET01/ProjetAngularBack
 
-## Further help
+### Modifiez l'URL de l'API dans les différents fichiers de service du frontend
+principalement dans le fichier assignment.service.ts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### installez les dépendances
+pour le frontend et le backend, faire: npm install
+
+### Exécutez les projets
+- frontend: ng serve
+backend: node server.js (ou "npm run start")
+
+### Ouvrez les projets dans votre navigateur
+- frontend: http://localhost:4200/home
+- backend: http://localhost:8010/api/assignments
+
+### Connectez-vous!
+- En tant que admin: Idantifiant = 'admin', Mot de passe = 'admin'
+- En tant qye utilisateur simple: Identifiant = 'user', Mot de passe = 'password'
+
+## Hébergement du projet
+Le projet est hébergé sur render.com. Vous pouvez y acceder via les liens suivants:
+frontend:
+backend: 

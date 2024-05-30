@@ -5,6 +5,7 @@
   .toolbar {
     background-color: #4CAF50; 
     color: white; 
+    align-items: center;
   }
 
  .container {

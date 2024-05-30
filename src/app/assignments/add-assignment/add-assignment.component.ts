@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-// formulaires et champs de saisie...
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Assignment } from '../assignment.model';
@@ -18,14 +19,15 @@ import { Router } from '@angular/router';
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [FormsModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, 
-    MatButtonModule, CommonModule],
+    MatButtonModule, CommonModule, MatSnackBarModule],
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.css'
 })
 export class AddAssignmentComponent {
-//nomEleve: any;
+
   constructor(private assignmentsService:AssignmentsService,
               private router:Router,
+              private snackBar: MatSnackBar
        
   ) { }
 
@@ -76,8 +78,6 @@ export class AddAssignmentComponent {
       matiereImg: 'assets/images/musique.jpg',
       profImg: 'assets/images/prof_musique.jpg'
     }
-
-    // Ajoutez d'autres matières ici si nécessaire
   };
 
   get matiereImage() {
@@ -119,6 +119,9 @@ export class AddAssignmentComponent {
       // afficher la liste des assignments à jour
       this.router.navigate(['/home']);
     });
+    this.snackBar.open('Le devoir a bien été ajouté', 'Fermer', {
+      duration: 4000
+      });
  }
 
 }

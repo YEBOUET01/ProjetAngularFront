@@ -39,7 +39,7 @@
         <img *ngIf="profImage" [src]="profImage" alt="Image du prof de la matière" width="200">
         </div>
 
-       <button mat-raised-button class="btn" color="primary" [disabled]="((!nomAssignment)||(!dateDeRendu))||(!Note)||(!Devoir)||(!Matiere)||(!Remarque)">
+       <button mat-raised-button class="btn" [disabled]="((!nomAssignment)||(!dateDeRendu))||(!Note)||(!Devoir)||(!Matiere)||(!Remarque)">
         Sauver
       </button> 
     </form>
