@@ -62,7 +62,7 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentsService.updateAssignment(this.assignmentTransmis)
       .subscribe(message => {
         console.log(message);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/detail']);
         this.snackBar.open('Le devoir a bien été rendu', 'Fermer', {
         duration: 4000
         });

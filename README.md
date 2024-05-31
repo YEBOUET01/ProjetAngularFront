@@ -3,7 +3,7 @@ Il sagit pour nous dans ce projet, dans le cadre de la mise en application de no
 
 
 ## Binôme pour le projet
-- SILUE CAMPBEL IBRAHIM FOUGNIGUE
+- SILUE CAMPBEL IBRAHIM FOUNGNIGUE
 - YEBOUET RICHMOND JUNIOR
 
 ## Contributions pour la réalisation
@@ -23,6 +23,18 @@ Il sagit pour nous dans ce projet, dans le cadre de la mise en application de no
         - Une image sera associée à chaque matière et une photo du prof
     - Note sur 20
     - Remarques
+### Important pour les MATIERES
+Nous avons fait un Mapping des matières avec leurs images et les images des profs. Donc il va falloir saisir les noms des Matières comme ceci pour voir apparaitre les images associées:
+- Mathematiques
+- Physique
+- SVT
+- Francais
+- Espagnol
+- Arts
+- Informatique
+- Musique
+
+
 - Améliorer l'affichage des Assignments
     - Puisqu'on a ajouté de nouvelles propriétés, il faudra mettre à jour les différents endroits où les Assignments sont affichés/édités/saisis, en particulier :
         - Par exemple, afficher dans la liste des Assignments chaque Assignment sous forme d'une Material Card, avec le titre, la date, l'élève, une petite image illustrant la - - matière, la photo du prof en petit en haut à droite.
@@ -34,6 +46,11 @@ Il sagit pour nous dans ce projet, dans le cadre de la mise en application de no
 
 ### Ce que nous avons réalisé en plus
 - Ajout de messages de notification (SnackBar Material)
+
+### Données
+Nous avons généré 1000 iniriales
+- La couleur verte du devoir signifie qu'il a été rendu
+- La note "-1" signifie que le devoir n'a pas encore été noté
 
 
 ## Pour faire tourner le projet sr votre machine, il faut:
@@ -63,9 +80,7 @@ backend: node server.js (ou "npm run start")
 Le projet est hébergé sur render.com. Vous pouvez y acceder via les liens suivants:
 
 - frontend: https://projetangularfront.onrender.com
-- backend: https://projetangularback.onrender.com
 
-## Vidéo de démonstration
-
+- backend: https://projetangularback.onrender.com/api/assignments
 
 

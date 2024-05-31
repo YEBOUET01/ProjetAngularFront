@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'home', component: AssignmentsComponent },
+    { path: 'detail', component: AssignmentDetailComponent },
     { path: 'scrolling', component: AssignmentsScrollingComponent },
     { path: 'add', component: AddAssignmentComponent}, 
     { path: 'assignments/:id', component: AssignmentDetailComponent },

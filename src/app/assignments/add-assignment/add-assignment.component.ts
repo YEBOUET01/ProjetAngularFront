@@ -33,11 +33,11 @@ export class AddAssignmentComponent {
 
   // pour le formulaire
   nomDevoir = '';
-  dateDeRendu = null;
+  // dateDeRendu = null;
   nomEleve = '';
   Matiere = '';
-  Note = 0 ;
-  Remarque = '';
+  // Note = 0 ;
+  // Remarque = '';
   
 
   // Mapping des matières vers leurs images
@@ -92,20 +92,20 @@ export class AddAssignmentComponent {
 
 
   onSubmit() {
-    if(this.nomDevoir === '' || this.nomEleve == '' || this.Matiere == '' || this.dateDeRendu === null) return;
+    if(this.nomDevoir === '' || this.nomEleve == '' || this.Matiere == '' ) return;
 
    console.log("Bouton cliqué, on ajoute le devoir : " + this.nomDevoir + 
-   " à rendre pour le " + this.dateDeRendu);
+   " à rendre pour le " );
 
    // On crée un nouvel assignment avec les valeurs du formulaire
    let a = new Assignment();
    a.devoir = this.nomDevoir;
    a.matiere = this.Matiere;
    a.nom = this.nomEleve;
-   a.note = this.Note;
-   a.dateDeRendu = this.dateDeRendu;
+  //  a.note = this.Note;
+  //  a.dateDeRendu = null;
    a.rendu = false;
-   a.remarque = this.Remarque;
+  //  a.remarque = "";
 
 
 

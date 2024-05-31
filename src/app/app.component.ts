@@ -31,6 +31,7 @@ export class AppComponent {
   titre="Application de gestion des devoirs à rendre !";
 
   constructor(private authService:AuthService, 
+    private assignmentsService:AssignmentsService,
   ) {}
 
 
@@ -38,5 +39,27 @@ export class AppComponent {
     this.authService.logOut(); 
   }
 
+  genereDonnesDeTest() {
+    //this.assignmentsService.peuplerBDNaive();
+    //console.log("APRES L'APPEL A PEUPLER BD !!!")
 
-}
+    this.assignmentsService.peuplerBDavecForkJoin()
+    .subscribe(() => {
+      console.log("PEUPLER BD A BIEN TERMINE LES AJOUTS !");
+      // et on navigue vers la page d'accueil
+      //this.router.navigate(['/home'], {replaceUrl: true});
+      // les lignes ci-dessus ne marchent plus avec angular 17
+      // (on est déjà dans /home et les options pour forcer le refresh
+      // ont dû changer avec la version 17, voir cours...)
+      
+      window.location.reload();
+    })
+  }
+
+        
+      }
+    
+  
+
+
+

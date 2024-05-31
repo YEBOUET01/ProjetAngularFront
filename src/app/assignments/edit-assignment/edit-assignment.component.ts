@@ -137,7 +137,7 @@ export class EditAssignmentComponent {
         // navigation vers la home page, important que ce soit
         // dans le subscribe pour être sûr que la mise à jour
         // de l'assignment est terminée
-       this.router.navigate(['/home']);
+       this.router.navigate(['/assignments, assignment._id']);
        console.log("ON NAVIGUE VERS HOME !")
       });
       this.snackBar.open('Le devoir a bien été modifié', 'Fermer', {
