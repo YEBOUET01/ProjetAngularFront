@@ -83,4 +83,6 @@ Le projet est hébergé sur render.com. Vous pouvez y acceder via les liens suiv
 
 - backend: https://projetangularback.onrender.com/api/assignments
 
+## Vidéo de présentation
 
+https://www.youtube.com/watch?v=_Ev36hghoOw
